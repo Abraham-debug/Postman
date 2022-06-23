@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "a06f5453-b51e-4287-b4aa-92ba414f94d6",
+		"name": "TRELLO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20972045"
+	},
+	"item": [
+		{
+			"name": "Create a board",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"name\": \"AgbaTester\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}?name=Agbatester&key={{key}}&token={{token}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Agbatester"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch a board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    \r",
+							"});\r",
+							"pm.test(\"Board Name\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"AgbaTester\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}62a3d2eb35132e10911b906b?key={{key}}&token={{token}}",
+					"host": [
+						"{{baseUrl}}62a3d2eb35132e10911b906b"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a board",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}62a1ead790fe2525914ed45f?key={{key}}&token={{token}}",
+					"host": [
+						"{{baseUrl}}62a1ead790fe2525914ed45f"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a board",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"name\" : \"Abraham\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}62a1f0d07cc73d16097adad9?key={{key}}&token={{token}}",
+					"host": [
+						"{{baseUrl}}62a1f0d07cc73d16097adad9"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.trello.com/1/boards/"
+		},
+		{
+			"key": "key",
+			"value": "5c8a555211722bb5ce2de0704774ad8d"
+		},
+		{
+			"key": "token",
+			"value": "a6f60122e7612c0a3eb1fd4d3ca656e8972a30ceb1da3ef80fbaf376b4c925e3"
+		}
+	]
+}
